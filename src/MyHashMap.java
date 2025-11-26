@@ -51,7 +51,7 @@ public class MyHashMap {
         return list.size();
     }
     public Object get(Object key){
-        if(!keyInTable(key)) return null;
+        if (!keyInTable(key)) return Null;
         return getKVP(key).value;
     }
 }

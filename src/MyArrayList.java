@@ -13,9 +13,7 @@ public class MyArrayList<T> {
     }
     private void expand ( int expandLength ) {
         Object[] newList = new Object[list.length + expandLength];
-        for(int i = 0; i < list.length; i++){
-            newList[i] = list[i];
-        }
+        System.arraycopy(list, 0, newList, 0, list.length);
     }
     public  void add    ( T value          ) {
         if(size == list.length){
