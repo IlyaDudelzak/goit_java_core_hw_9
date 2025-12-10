@@ -55,9 +55,7 @@ public class MyArrayList<E> extends AbstractList<E> {
         size++;
     }
     public E remove (int index) {
-        if(index >= size){
-            return null;
-        }
+        if(index >= size){ throw new IndexOutOfBoundsException() }
         Object element = elementData[index];
         for (int i = index; i < size - 1; i++) {
             elementData[i] = elementData[i + 1];

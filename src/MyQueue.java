@@ -10,7 +10,7 @@ public class MyQueue<T> {
 
     private Node getNode(int index) {
         if(index >= size || index < -size)
-            return null;
+            throw new IndexOutOfBoundsException();
         if(index == 0)
             return first;
         if(index > 0){

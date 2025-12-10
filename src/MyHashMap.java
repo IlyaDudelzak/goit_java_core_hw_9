@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class MyHashMap {
     private class HashKeyValuePair {
         int hashKey;
@@ -20,7 +22,7 @@ public class MyHashMap {
             if(keyValuePair.isSameKey(key))
                 return keyValuePair;
         }
-        return null;
+        throw new NoSuchElementException();
     }
     public boolean keyInTable(Object key){
         boolean in = false;
@@ -51,7 +53,7 @@ public class MyHashMap {
         return list.size();
     }
     public Object get(Object key){
-        if (!keyInTable(key)) return Null;
+        if (!keyInTable(key)) throw new NoSuchElementException();
         return getKVP(key).value;
     }
 }

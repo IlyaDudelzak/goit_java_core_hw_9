@@ -10,7 +10,7 @@ public class MyStack<T> {
 
     private Node getNode(final int index) {
         if(index >= size || index < -size)
-            return null;
+            throw new IndexOutOfBoundsException();
         if(index == 0)
             return first;
         if(index > 0){
