@@ -8,7 +8,7 @@ public class MyQueue<T> {
         size = 0;
     }
 
-    private Node getNode( int index            ) {
+    private Node getNode(int index) {
         if(index >= size || index < -size)
             return null;
         if(index == 0)
@@ -21,13 +21,13 @@ public class MyQueue<T> {
             return getNode(last, index + 1);
         }
     }
-    private Node getNode( Node node, int index ) {
+    private Node getNode(Node node, int index) {
         if(index == 0) return node;
         if(index > 0) return getNode(node.next, index - 1);
         return getNode(node.previous, index + 1);
     }
 
-    public void add   ( T value ) {
+    public void add(T value) {
         size++;
         if(first == null) {
             Node node = new Node(value);
@@ -37,19 +37,19 @@ public class MyQueue<T> {
         }
         last = last.newNode(value);
     }
-    public void clear (         ) {
+    public void clear() {
         first.removeAll();
         first = null;
         last = null;
         size = 0;
     }
-    public int  size  (         ) {
+    public int size() {
         return size;
     }
-    public T    peek  (         ) {
+    public T peek() {
         return first != null ? (T)first.value : null;
     }
-    public T    poll  (         ) {
+    public T poll() {
         if(first == null) return null;
         Object value = first.value;
         if(first.next != null){

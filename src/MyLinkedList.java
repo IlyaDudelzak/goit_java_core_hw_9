@@ -8,7 +8,7 @@ public class MyLinkedList<T> {
         size = 0;
     }
 
-    private Node getNode( int index            ) {
+    private Node getNode(int index) {
         if(index >= size || index < -size)
             return null;
         if(index == 0)
@@ -21,13 +21,13 @@ public class MyLinkedList<T> {
             return getNode(last, index + 1);
         }
     }
-    private Node getNode( Node node, int index ) {
+    private Node getNode(Node node, int index) {
         if(index == 0) return node;
         if(index > 0) return getNode(node.next, index - 1);
         return getNode(node.previous, index + 1);
     }
 
-    public void add    ( T value   ) {
+    public void add(T value) {
         size++;
         if(first == null) {
             Node node = new Node(value);
@@ -37,21 +37,21 @@ public class MyLinkedList<T> {
         }
         last = last.newNode(value);
     }
-    public void remove ( int index ) {
+    public void remove(int index) {
         Node node = getNode(index);
         if(node != null)
             node.remove();
     }
-    public int  size   (           ) {
+    public int  size() {
         return size;
     }
-    public void clear  (           ) {
+    public void clear() {
         first.removeAll();
         first = null;
         last = null;
         size = 0;
     }
-    public T    get    ( int index ) {
+    public T get(int index) {
         Node node = getNode(index);
         return node != null ? (T)node.value : null;
     }

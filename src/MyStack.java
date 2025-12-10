@@ -8,7 +8,7 @@ public class MyStack<T> {
         size = 0;
     }
 
-    private Node getNode( int index            ) {
+    private Node getNode(final int index) {
         if(index >= size || index < -size)
             return null;
         if(index == 0)
@@ -21,13 +21,13 @@ public class MyStack<T> {
             return getNode(last, index + 1);
         }
     }
-    private Node getNode( Node node, int index ) {
+    private Node getNode(final Node node, final int index) {
         if(index == 0) return node;
         if(index > 0) return getNode(node.next, index - 1);
         return getNode(node.previous, index + 1);
     }
 
-    public void push   ( T value   ) {
+    public void push(final T value) {
         size++;
         if(first == null) {
             Node node = new Node(value);
@@ -37,24 +37,24 @@ public class MyStack<T> {
         }
         last = last.newNode(value);
     }
-    public void remove ( int index ) {
+    public void remove(final int index) {
         Node node = getNode(index);
         if(node != null)
             node.remove();
     }
-    public void clear  (           ) {
+    public void clear() {
         first.removeAll();
         first = null;
         last = null;
         size = 0;
     }
-    public int  size   (           ) {
+    public int size() {
         return size;
     }
-    public T    peek   (           ) {
+    public T peek() {
         return first != null ? (T)first.value : null;
     }
-    public T    pop    (           ) {
+    public T pop() {
         if(last == null) return null;
         Object value = last.value;
         if(last.previous != null){
