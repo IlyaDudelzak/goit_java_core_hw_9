@@ -3,14 +3,14 @@ import java.util.NoSuchElementException;
 public class MyHashMap<K, V> {
     private class HashKeyValuePair<K, V> {
         int hashKey;
-//        final K key;
+        final K key;
         V value;
 
         HashKeyValuePair<K, V> next;
 
         public HashKeyValuePair(K key, V value){
-            this.hashKey = key.hashCode();
-//            this.key = key;
+            this.hashKey = key == null ? 0 : key.hashCode();
+            this.key = key;
             this.value = value;
         }
         public boolean isSameKey(K key){
@@ -30,8 +30,16 @@ public class MyHashMap<K, V> {
         size = 0;
     }
 
+    public void doubleSize(){
+        HashKeyValuePair[] oldElementData = elementData;
+        elementData = new HashKeyValuePair[elementData.length * 2];
+        for(HashKeyValuePair<K, V> node: oldElementData) {
+            put(node.key, node.value);
+        }
+    }
+
     private int getIndex(K key){
-        return key.hashCode() & (elementData.length - 1);
+        return key == null ? 0 : key.hashCode() & (elementData.length - 1);
     }
 
     private HashKeyValuePair<K, V> getKVPNoExc(K key){
